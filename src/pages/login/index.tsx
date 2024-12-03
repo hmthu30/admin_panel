@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function index() {
   return (
     <div className="flex h-screen items-center justify-center bg-loginBG">
-      <div className="w-full max-w-md rounded-lg bg-white p-8 shadow-lg">
+      <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
         <div className="mb-6 flex justify-center">
           <Image
             src="/assets/imgs/logoAxu.png"
@@ -65,17 +65,17 @@ export default function index() {
           </div>
 
           <div className="mb-6 flex items-center justify-between">
-            <a href="#" className="text-sm text-blue-500 hover:underline">
+            <a href="#" className="text-sm font-bold text-black hover:underline">
               Forgot Password?
             </a>
-            <a href="#" className="text-sm text-blue-500 hover:underline">
+            <a href="#" className="text-sm font-bold text-primary hover:underline">
               Reset Password
             </a>
           </div>
 
           <button
             type="submit"
-            className="w-full rounded-lg bg-blue-500 px-4 py-2 text-white transition hover:bg-blue-600"
+            className="w-full rounded-full bg-primary px-4 py-2 text-white transition hover:bg-blue-600"
           >
             Login Now
           </button>
