@@ -11,6 +11,10 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        lightGreen: "#a1ffa1",
+      },
+      backgroundImage: {
+        loginBG: "linear-gradient(45deg, #b5ffdc, #ffffff, #cbfaff)",
       },
     },
   },
