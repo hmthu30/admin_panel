@@ -1,12 +1,11 @@
-"use client";
-
+import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
 
 const Index = () => {
+  const { token } = useAuth();
   const router = useRouter();
-  const token = false;
 
+  if (typeof window === "undefined") return;
   if (!router.isReady) return;
 
   if (!token) {
@@ -14,6 +13,7 @@ const Index = () => {
   } else {
     router.push("/dashboard");
   }
+
 };
 
 export default Index;
