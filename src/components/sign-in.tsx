@@ -21,7 +21,7 @@ export function SignIn() {
     if (!result?.error) {
       console.log(result);
 
-      // router.push("/dashboard");
+      router.push("/");
     } else {
       alert("Invalid credentials!");
     }

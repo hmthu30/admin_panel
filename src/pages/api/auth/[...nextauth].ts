@@ -35,15 +35,19 @@ export default NextAuth({
   },
   callbacks: {
     async jwt({ token, user }) {
+      console.log("🚀 ~ jwt ~ token, user:", token, user)
       if (user) {
         token.id = user.id;
         token.name = user.name;
+        token.email = "email@example.com";
+        token.token = "HELLO";
       }
       return token;
     },
     async session({ session, token }) {
       session.user = {
         name: token.name,
+        token,
       };
       return session;
     },
