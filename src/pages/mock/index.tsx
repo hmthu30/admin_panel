@@ -6,7 +6,7 @@ const MockPage = () => {
   return (
     <Auxiliary>
       <InputBox
-        label={""}
+        label={"Industry Code"}
         value={""}
         onChange={function (): void {
           throw new Error("Function not implemented.");

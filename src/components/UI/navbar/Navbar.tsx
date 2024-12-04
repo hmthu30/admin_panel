@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
   }
 
   return (
-    <nav>
+    <nav className="h-full">
       <ul>
         <li>
           <Link href="/">Home</Link>
