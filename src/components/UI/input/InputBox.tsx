@@ -2,34 +2,34 @@ import React from "react";
 
 interface InputBoxProps {
   label: string;
-  type?: string;
-  placeholder?: string;
+  name: string;
+  type: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  errorMessage?: string;
-  required?: boolean;
+  placeholder?: string;
   maxLength?: number;
   minLength?: number;
-  name?: string;
+  required?: boolean;
+  errorMessage?: string;
 }
 
 const InputBox: React.FC<InputBoxProps> = ({
   label,
-  type = "text",
-  placeholder = "",
+  name,
+  type,
   value,
   onChange,
-  errorMessage,
-  required = false,
+  placeholder = "",
   maxLength,
   minLength,
-  name,
+  required = false,
+  errorMessage,
 }) => {
   return (
-    <div className="input-box">
-      <label className="label" htmlFor={name}>
+    <div className="mb-4">
+      <label htmlFor={name} className="block mb-2 font-semibold">
         {label}
-        {required && <span className="required">*</span>}
+        {required && <span className="text-red-500 ml-1">*</span>}
       </label>
       <input
         id={name}
@@ -41,39 +41,11 @@ const InputBox: React.FC<InputBoxProps> = ({
         maxLength={maxLength}
         minLength={minLength}
         required={required}
-        className="input"
+        className="w-full px-3 py-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-gray-500"
       />
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <style jsx>{`
-        .input-box {
-          margin-bottom: 1rem;
-        }
-        .label {
-          display: block;
-          margin-bottom: 0.5rem;
-          font-weight: bold;
-        }
-        .required {
-          color: red;
-          margin-left: 0.2rem;
-        }
-        .input {
-          width: 100%;
-          padding: 0.5rem;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          font-size: 1rem;
-        }
-        .input:focus {
-          outline: none;
-          border-color: #0070f3;
-        }
-        .error-message {
-          color: red;
-          font-size: 0.875rem;
-          margin-top: 0.5rem;
-        }
-      `}</style>
+      {errorMessage && (
+        <p className="text-red-500 text-sm mt-1">{errorMessage}</p>
+      )}
     </div>
   );
 };
