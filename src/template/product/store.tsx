@@ -1,4 +1,4 @@
-import { createContextStore } from "@/utils/ZustandProvider";
+import { createContextStore } from "@/context/ZustandProvider";
 import { createStore } from "zustand/vanilla";
 import { MyMutationProvider } from "./mutation";
 

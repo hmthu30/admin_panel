@@ -1,4 +1,4 @@
-import { createContextMutation } from "@/utils/MutationProvider";
+import { createContextMutation } from "@/context/MutationProvider";
 import { useMutation } from "react-query";
 
 const myMutationFunction = async (data: { title: string; body: string }) => {
