@@ -1,4 +1,5 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
 interface InputBoxProps {
   label: string;
@@ -11,6 +12,7 @@ interface InputBoxProps {
   minLength?: number;
   required?: boolean;
   errorMessage?: string;
+  className?: string;
 }
 
 const InputBox: React.FC<InputBoxProps> = ({
@@ -24,9 +26,10 @@ const InputBox: React.FC<InputBoxProps> = ({
   minLength,
   required = false,
   errorMessage,
+  className,
 }) => {
   return (
-    <div className="mb-4">
+    <div className={twMerge([className, "mb-4"])}>
       <label htmlFor={name} className="block mb-2 font-semibold">
         {label}
         {required && <span className="text-red-500 ml-1">*</span>}
