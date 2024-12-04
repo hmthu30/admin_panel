@@ -12,7 +12,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const initialValues = {
-    token: null,
+    token: "token",
   };
 
   return <AuthContext.Provider value={{...initialValues}}>{children}</AuthContext.Provider>;
