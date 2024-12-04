@@ -8,7 +8,7 @@ const MockPage = () => {
       <InputBox
         label={""}
         value={""}
-        onChange={function (e: React.ChangeEvent<HTMLInputElement>): void {
+        onChange={function (): void {
           throw new Error("Function not implemented.");
         }}
       />
