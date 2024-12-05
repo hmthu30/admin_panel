@@ -70,7 +70,7 @@ const Table = <T extends Record<string, unknown>>({
 
   return (
     <Auxiliary>
-      <AuxiliaryWithStyle className="flex">
+      <div className="flex">
         <InputBox
           label={"Search"}
           name={"search"}
@@ -84,7 +84,7 @@ const Table = <T extends Record<string, unknown>>({
         <HasAdvancedSearch advancedSearch={onAdvancedSearch}>
           Advanced Search
         </HasAdvancedSearch>
-      </AuxiliaryWithStyle>
+      </div>
 
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
