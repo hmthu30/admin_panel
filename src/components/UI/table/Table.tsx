@@ -76,7 +76,7 @@ const Table = <T extends Record<string, unknown>>({
           name={"search"}
           type={"text"}
           value={search}
-          className="w-[300px] mx-4"
+          className="mx-4 w-[300px]"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setSearch(e.target.value)
           }
@@ -86,18 +86,18 @@ const Table = <T extends Record<string, unknown>>({
         </HasAdvancedSearch>
       </AuxiliaryWithStyle>
 
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+      <table className="min-w-full border-0 bg-white text-sm">
         <thead>
           <tr>
             {columns.map((col) => (
               <th
                 key={col.key.toString()}
                 style={{
-                  borderBottom: "2px solid #ccc",
                   cursor: "pointer",
                   textAlign: "left",
                   padding: "0.5rem",
                 }}
+                className="bg-gray-100 px-6 py-3 text-left text-lg font-semibold text-primary"
                 onClick={() => handleSort(col.key)}
               >
                 {col.label}{" "}
@@ -109,12 +109,11 @@ const Table = <T extends Record<string, unknown>>({
         </thead>
         <tbody>
           {paginatedData.map((row, rowIndex) => (
-            <tr key={rowIndex}>
+            <tr className="odd:bg-white even:bg-gray-100" key={rowIndex}>
               {columns.map((col) => (
                 <td
                   key={col.key.toString()}
                   style={{
-                    borderBottom: "1px solid #ccc",
                     padding: "0.5rem",
                   }}
                 >
@@ -127,7 +126,6 @@ const Table = <T extends Record<string, unknown>>({
           ))}
         </tbody>
       </table>
-
       {/* Pagination */}
       <div
         style={{

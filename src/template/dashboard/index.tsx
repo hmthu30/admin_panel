@@ -30,7 +30,7 @@ const DashboardPage = () => {
     console.log("Advanced Search Triggered");
   };
   return (
-    <div>
+    <div className="min-h-screen bg-gray-100 p-5">
       <h1>Advanced Reusable Table</h1>
       <Table
         columns={columns as never}

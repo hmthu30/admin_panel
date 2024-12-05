@@ -25,7 +25,7 @@ export function Table({
     (typeof TableType)[keyof typeof TableType],
     string
   > = {
-    [TableType.Default]: "",
+    [TableType.Default]: "min-w-fit bg-white text-sm border-0 px-3 m-5",
     [TableType.Modify]: "",
   };
 
@@ -73,7 +73,8 @@ export function TableHeaderRow({
     (typeof TableHeaderRowType)[keyof typeof TableHeaderRowType],
     string
   > = {
-    [TableHeaderRowType.Default]: "",
+    [TableHeaderRowType.Default]:
+      "bg-gray-100 text-left font-semibold text-primary text-lg",
     [TableHeaderRowType.Modify]: "",
   };
   return (
@@ -122,7 +123,7 @@ export function TableHeaderRowCol({
     (typeof TableHeaderRowColType)[keyof typeof TableHeaderRowColType],
     string
   > = {
-    [TableHeaderRowColType.Default]: "",
+    [TableHeaderRowColType.Default]: "py-3 px-6",
     [TableHeaderRowColType.Modify]: "",
   };
   return (
@@ -172,7 +173,7 @@ export function TableBodyRow({
     (typeof TableBodyRowType)[keyof typeof TableBodyRowType],
     string
   > = {
-    [TableBodyRowType.Default]: "",
+    [TableBodyRowType.Default]: "odd:bg-white even:bg-gray-100",
     [TableBodyRowType.Modify]: "",
   };
 
@@ -224,7 +225,7 @@ export function TableBodyRowCol({
     (typeof TableBodyRowColType)[keyof typeof TableBodyRowColType],
     string
   > = {
-    [TableBodyRowColType.Default]: "",
+    [TableBodyRowColType.Default]: "py-4 px-6",
     [TableBodyRowColType.Modify]: "",
   };
   return (
