@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 
-const Navbar: React.FC = () => {
+const Sidebar: React.FC = () => {
   const { token } = useAuth();
 
   if (!token) {
@@ -26,4 +26,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+export default Sidebar;

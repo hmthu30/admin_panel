@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import type { AppProps } from "next/app";
 import { AuthProvider } from "@/context/AuthContext";
 import Auxiliary from "@/hoc/Auxilitary/Auxilitary";
-import NavbarLayout from "@/hoc/layout/NavbarLayout";
+import SidebarLayout from "@/hoc/layout/SidebarLayout";
 
 const queryClient = new QueryClient();
 
@@ -12,9 +12,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <Auxiliary>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
-          <NavbarLayout>
+          <SidebarLayout>
             <Component {...pageProps} />
-          </NavbarLayout>
+          </SidebarLayout>
         </AuthProvider>
       </QueryClientProvider>
     </Auxiliary>
