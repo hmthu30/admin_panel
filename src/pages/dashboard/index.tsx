@@ -1,3 +1,7 @@
 import DashboardTemplate from "@/template/dashboard";
 
-export default DashboardTemplate;
+const Page = () => {
+  return <DashboardTemplate />;
+};
+
+export default Page;
