@@ -33,9 +33,15 @@ const SidebarChildrenList: React.FC<SidebarMenuProps> = ({
   return (
     <NavbarULTag className={NavBarULType.Default}>
       {childrenList.map((child, index) => (
-        <NavbarLITag className={NavBarLiType.Default} key={index}>
-          <Link href={child.href}>{child.label}</Link>
-        </NavbarLITag>
+        <Link href={child.href}>
+          <NavbarLITag
+            className={NavBarLiType.Default}
+            additionalStyle="flex justify-between items-center"
+            key={index}
+          >
+            {child.label}
+          </NavbarLITag>
+        </Link>
       ))}
     </NavbarULTag>
   );

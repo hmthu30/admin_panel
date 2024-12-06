@@ -8,10 +8,10 @@ interface LayoutProps {
 const SidebarLayout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="flex flex-row h-screen">
-      <div className="h-full w-[25%] bg-gray-200">
+      <div className="h-full w-[25%] bg-white">
         <Sidebar />
       </div>
-      <div className="h-full w-[75%] bg-white">{children}</div>
+      <div className="h-full w-[75%] bg-gray-200">{children}</div>
     </div>
   );
 };

@@ -21,7 +21,7 @@ export function NavbarTag({
     (typeof NavBarType)[keyof typeof NavBarType],
     string
   > = {
-    [NavBarType.Default]: "h-full",
+    [NavBarType.Default]: "h-full mt-5",
     [NavBarType.Modify]: "bg-gray-200",
   };
 
@@ -64,28 +64,33 @@ interface NavbarLITagProps {
   className: (typeof NavBarLiType)[keyof typeof NavBarLiType];
   additionalStyle?: string;
   onClick?: () => void;
-  index?: number; 
+  index?: number;
 }
 
 export function NavbarLITag({
   children,
   className,
   additionalStyle,
-  onClick, 
-  index
+  onClick,
+  index,
 }: NavbarLITagProps) {
   const classNameMap: Record<
     (typeof NavBarLiType)[keyof typeof NavBarLiType],
     string
   > = {
-    [NavBarLiType.Default]: "text-black",
+    [NavBarLiType.Default]:
+      "text-black p-[16px] grid grid-cols-2 gap-3 rounded-full hover:bg-blue-200 hover:text-blue-600 cursor-pointer",
     [NavBarLiType.SubMenu]: "",
     [NavBarLiType.Active]: "",
     [NavBarLiType.Modify]: "",
   };
 
   return (
-    <li onClick={onClick} key={index} className={twMerge(classNameMap[className], additionalStyle, 'bg-red')}>
+    <li
+      onClick={onClick}
+      key={index}
+      className={twMerge(classNameMap[className], additionalStyle, "bg-red")}
+    >
       {children}
     </li>
   );

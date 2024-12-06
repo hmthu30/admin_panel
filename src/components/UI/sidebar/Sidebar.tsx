@@ -61,16 +61,18 @@ const Sidebar: React.FC = () => {
 
   return (
     <Auxiliary>
-      <div>
-        <h1>LOGO</h1>
+      <div className="p-4">
+        <div>
+          <h1>LOGO</h1>
+        </div>
+        <NavbarTag className={NavBarType.Default}>
+          <NavbarULTag className={NavBarULType.Default}>
+            {SidebarLinkLists.map((link) => {
+              return <AdminSidebar list={link} key={link.id} />;
+            })}
+          </NavbarULTag>
+        </NavbarTag>
       </div>
-      <NavbarTag className={NavBarType.Default}>
-        <NavbarULTag className={NavBarULType.Default}>
-          {SidebarLinkLists.map((link) => {
-            return <AdminSidebar list={link} key={link.id}/>;
-          })}
-        </NavbarULTag>
-      </NavbarTag>
     </Auxiliary>
   );
 };
