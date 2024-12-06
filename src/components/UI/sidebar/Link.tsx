@@ -47,9 +47,9 @@ export function NavbarULTag({
     (typeof NavBarULType)[keyof typeof NavBarULType],
     string
   > = {
-    [NavBarULType.Default]: "list-none p-0",
-    [NavBarULType.SubMenu]: "pl-4",
-    [NavBarULType.Modify]: "space-x-4",
+    [NavBarULType.Default]: "",
+    [NavBarULType.SubMenu]: "",
+    [NavBarULType.Modify]: "",
   };
 
   return (
@@ -63,25 +63,29 @@ interface NavbarLITagProps {
   children: React.ReactNode;
   className: (typeof NavBarLiType)[keyof typeof NavBarLiType];
   additionalStyle?: string;
+  onClick?: () => void;
+  index?: number; 
 }
 
 export function NavbarLITag({
   children,
   className,
   additionalStyle,
+  onClick, 
+  index
 }: NavbarLITagProps) {
   const classNameMap: Record<
     (typeof NavBarLiType)[keyof typeof NavBarLiType],
     string
   > = {
     [NavBarLiType.Default]: "text-black",
-    [NavBarLiType.SubMenu]: "text-gray-600",
-    [NavBarLiType.Active]: "text-blue-500 font-bold",
-    [NavBarLiType.Modify]: "text-red-500",
+    [NavBarLiType.SubMenu]: "",
+    [NavBarLiType.Active]: "",
+    [NavBarLiType.Modify]: "",
   };
 
   return (
-    <li className={twMerge(classNameMap[className], additionalStyle)}>
+    <li onClick={onClick} key={index} className={twMerge(classNameMap[className], additionalStyle, 'bg-red')}>
       {children}
     </li>
   );
