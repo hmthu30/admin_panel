@@ -52,9 +52,12 @@ const TablePage = <T extends Record<string, unknown>>({
     <Table className={TableType.Default}>
       <TableHeader className={TableHeaderType.Default}>
         <TableHeaderRow className={TableHeaderRowType.Default}>
-          {columns.map((data) => {
+          {columns.map((data, index) => {
             return (
-              <TableHeaderRowCol className={TableHeaderRowColType.Default}>
+              <TableHeaderRowCol
+                className={TableHeaderRowColType.Default}
+                key={index + data.label}
+              >
                 {data.label}
               </TableHeaderRowCol>
             );
@@ -62,13 +65,15 @@ const TablePage = <T extends Record<string, unknown>>({
         </TableHeaderRow>
       </TableHeader>
       <TableBody className={TableBodyType.Default}>
-        {data.map((data) => {
+        {data.map((data, index) => {
           return (
-            <TableBodyRow className={TableBodyRowType.Default}>
-              {columns.map((column) => {
-                console.log("🚀 ~ {columns.map ~ column:", column);
+            <TableBodyRow className={TableBodyRowType.Default} key={index}>
+              {columns.map((column, index) => {
                 return (
-                  <TableBodyRowCol className={TableBodyRowColType.Default}>
+                  <TableBodyRowCol
+                    className={TableBodyRowColType.Default}
+                    key={index}
+                  >
                     {data[column.key] as never}
                   </TableBodyRowCol>
                 );

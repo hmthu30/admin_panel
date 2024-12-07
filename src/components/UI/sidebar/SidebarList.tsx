@@ -72,8 +72,6 @@ const LinkWrapper: React.FC<LinkWrapperType> = ({
     [LinkWrapperType.Modify]: "",
   };
 
-  console.log(props.list.href);
-
   return (
     <Link
       href={props.list.href}
@@ -99,7 +97,7 @@ const SidebarChildrenList: React.FC<SidebarMenuProps> = ({
   return (
     <NavbarULTag className={NavBarULType.Default}>
       {childrenList.map((child, index) => (
-        <Link href={child.href} className="">
+        <Link href={child.href} className="" key={index}>
           <NavbarLITag className={NavBarLiType.Default} key={index}>
             {child.label}
           </NavbarLITag>
