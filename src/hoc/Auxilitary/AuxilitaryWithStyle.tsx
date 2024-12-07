@@ -8,7 +8,7 @@ const AuxiliaryWithStyle: React.FC<AuxiliaryWithStyleProps> = ({
   className = "",
   children,
 }) => {
-  return <div className={`auxiliary-wrapper ${className}`}>{children}</div>;
+  return <div className={`${className}`}>{children}</div>;
 };
 
 export default AuxiliaryWithStyle;

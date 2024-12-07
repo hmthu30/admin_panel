@@ -40,7 +40,7 @@ interface SortConfig<T> {
   direction: "asc" | "desc";
 }
 
-const TablePage = <T extends Record<string, unknown>>({
+const BaseTable = <T extends Record<string, unknown>>({
   columns,
   data,
   onAdvancedSearch,
@@ -86,4 +86,4 @@ const TablePage = <T extends Record<string, unknown>>({
   );
 };
 
-export default TablePage;
+export default BaseTable;

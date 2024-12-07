@@ -1,43 +1,46 @@
+import React from "react";
 import { createContextStore } from "@/context/ZustandProvider";
 import { createStore } from "zustand/vanilla";
 import { MyMutationProvider } from "./mutation";
 
-export type CounterState = {
-  count: number;
+export type DashboardState = {
+  TableHeader: any;
+  TableData: any;
 };
 
-export type CounterActions = {
-  incrementCount: () => void;
-  decrementCount: () => void;
+export type DashboardActions = {
+  setTableHeader: (header: any) => void;
+  setTableData: (data: any) => void;
 };
 
-export type CounterStore = CounterState & CounterActions;
+export type DashboardStore = DashboardState & DashboardActions;
 
-const defaultCounterState: CounterState = {
-  count: 0,
+const defaultDashboardState: DashboardState = {
+  TableHeader: null,
+  TableData: null,
 };
 
-const [CounterStoreProvider, useCounterStore] = createContextStore<
-  CounterStore,
-  CounterState
->((props: CounterState) =>
-  createStore<CounterStore>()((set) => ({
-    ...defaultCounterState,
+const [DashboardStoreProvider, useDashboardStore] = createContextStore<
+  DashboardStore,
+  DashboardState
+>((props: DashboardState) =>
+  createStore<DashboardStore>()((set) => ({
+    ...defaultDashboardState,
     ...props,
-    incrementCount: () => set((state) => ({ count: state.count + 1 })),
-    decrementCount: () => set((state) => ({ count: state.count - 1 })),
+    setTableHeader: (header) => set(() => ({ TableHeader: header })),
+    setTableData: (data) => set(() => ({ TableData: data })),
   }))
 );
 
-export { useCounterStore };
+export { useDashboardStore };
 
-export default function CounterStoreProviderWithProps({
+export default function DashboardStoreProviderWithProps({
   children,
   ...props
-}: React.PropsWithChildren<CounterState>) {
+}: React.PropsWithChildren<DashboardState>) {
   return (
-    <CounterStoreProvider {...props}>
+    <DashboardStoreProvider {...props}>
       <MyMutationProvider>{children}</MyMutationProvider>
-    </CounterStoreProvider>
+    </DashboardStoreProvider>
   );
 }

@@ -68,18 +68,21 @@ const LinkWrapper: React.FC<LinkWrapperType> = ({
     (typeof LinkWrapperType)[keyof typeof LinkWrapperType],
     string
   > = {
-    [LinkWrapperType.Default]: "text-black",
+    [LinkWrapperType.Default]: "text-black cursor-pointer",
     [LinkWrapperType.Modify]: "",
   };
 
+  //hard code need to change this
+  const Component = props.list.href && props.list.href !== "#" ? Link : "div";
+
   return (
-    <Link
+    <Component
       href={props.list.href}
       className={twMerge([classNameMap[className], additionalStyle])}
       onClick={onclick}
     >
       {children}
-    </Link>
+    </Component>
   );
 };
 

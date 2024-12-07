@@ -42,3 +42,8 @@ export const TableBodyRowColType = {
   Default: "default-table-body-row-col",
   Modify: "modify-table-body-row-col",
 } as const;
+
+export const TableLayoutType = {
+  Default: "default-layout",
+  Modify: "modify-layout",
+} as const;
