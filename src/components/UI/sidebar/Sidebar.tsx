@@ -5,7 +5,11 @@ import Auxiliary from "@/hoc/Auxilitary/Auxilitary";
 import Link from "next/link";
 import React, { useMemo } from "react";
 import { NavbarTag, NavbarULTag } from "./Link";
-import { NavBarType, NavBarULType } from "@/utils/const/navbarConstant";
+import {
+  NavBarType,
+  NavBarULType,
+  SidebarItem,
+} from "@/utils/const/navbarConstant";
 import AdminSidebar from "./AdminSidebar";
 
 const Sidebar: React.FC = () => {
@@ -67,7 +71,7 @@ const Sidebar: React.FC = () => {
       <NavbarTag className={NavBarType.Default}>
         <NavbarULTag className={NavBarULType.Default}>
           {SidebarLinkLists.map((link) => {
-            return <AdminSidebar list={link} key={link.id}/>;
+            return <AdminSidebar list={link as SidebarItem} key={link.id} />;
           })}
         </NavbarULTag>
       </NavbarTag>

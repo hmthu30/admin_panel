@@ -1,26 +1,92 @@
-import { NavBarLiType, NavBarULType } from "@/utils/const/navbarConstant";
+import {
+  AdminSidebarProps,
+  LinkWrapperType,
+  NavBarLiType,
+  NavBarULType,
+  SidebarChildItem,
+  SidebarListTypeEnum,
+} from "@/utils/const/navbarConstant";
 import Link from "next/link";
 import React from "react";
 import { NavbarLITag, NavbarULTag } from "./Link";
+import { twMerge } from "tailwind-merge";
+import Auxiliary from "@/hoc/Auxilitary/Auxilitary";
 
-const SidebarList = (props: any) => {
-  return (
-    <Link href={props.list.href}>
-      {props.list.icon}/{props.list.label}
-    </Link>
-  );
-};
+interface SidebarListType {
+  label: string;
+  icon?: string;
+  haveChildren: boolean;
+  children?: SidebarChildItem[];
+  isOpenChildren?: boolean;
+}
 
-const SidebarListWithLi = (props: any) => {
+const SidebarList: React.FC<SidebarListType> = ({
+  label,
+  icon,
+  haveChildren,
+  children,
+  isOpenChildren,
+}) => {
+  if (haveChildren) {
+    return (
+      <Auxiliary>
+        <NavbarLITag className={NavBarLiType.Default}>
+          {icon}
+          {label}
+        </NavbarLITag>
+        <SidebarChildrenList
+          childrenList={children as SidebarChildItem[]}
+          isOpen={isOpenChildren as boolean}
+        />
+      </Auxiliary>
+    );
+  }
   return (
-    <NavbarLITag className={NavBarLiType.Default} key={props.list.id}>
-      <SidebarList {...props} />
+    <NavbarLITag className={NavBarLiType.Default}>
+      {icon}
+      {label}
     </NavbarLITag>
   );
 };
 
+interface LinkWrapperType {
+  props: AdminSidebarProps;
+  children: React.ReactNode;
+  className: (typeof LinkWrapperType)[keyof typeof LinkWrapperType];
+  additionalStyle?: string;
+  onclick?: () => void;
+}
+
+const LinkWrapper: React.FC<LinkWrapperType> = ({
+  children,
+  className,
+  additionalStyle = "",
+  props,
+  onclick,
+}) => {
+  const classNameMap: Record<
+    (typeof LinkWrapperType)[keyof typeof LinkWrapperType],
+    string
+  > = {
+    [LinkWrapperType.Default]: "text-black",
+    [LinkWrapperType.Modify]: "",
+  };
+
+  console.log(props.list.href);
+
+  return (
+    <Link
+      href={props.list.href}
+      className={twMerge([classNameMap[className], additionalStyle])}
+      onClick={onclick}
+    >
+      {children}
+    </Link>
+  );
+};
+
 interface SidebarMenuProps {
-  childrenList: any[];
+  childrenList: SidebarChildItem[];
   isOpen: boolean;
 }
 
@@ -33,12 +99,14 @@ const SidebarChildrenList: React.FC<SidebarMenuProps> = ({
   return (
     <NavbarULTag className={NavBarULType.Default}>
       {childrenList.map((child, index) => (
-        <NavbarLITag className={NavBarLiType.Default} key={index}>
-          <Link href={child.href}>{child.label}</Link>
-        </NavbarLITag>
+        <Link href={child.href} className="">
+          <NavbarLITag className={NavBarLiType.Default} key={index}>
+            {child.label}
+          </NavbarLITag>
+        </Link>
       ))}
     </NavbarULTag>
   );
 };
 
-export { SidebarList, SidebarListWithLi, SidebarChildrenList };
+export { SidebarList, LinkWrapper };

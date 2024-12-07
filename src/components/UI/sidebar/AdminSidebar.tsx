@@ -1,37 +1,37 @@
-import Auxiliary from "@/hoc/Auxilitary/Auxilitary";
 import React, { useState } from "react";
-import {
-  SidebarChildrenList,
-  SidebarList,
-  SidebarListWithLi,
-} from "./SidebarList";
-import { NavbarLITag } from "./Link";
-import { NavBarLiType } from "@/utils/const/navbarConstant";
+import { LinkWrapper, SidebarList } from "./SidebarList";
+import { AdminSidebarProps, LinkWrapperType } from "@/utils/const/navbarConstant";
 
-const AdminSidebar = (props: any) => {
+const AdminSidebar: React.FC<AdminSidebarProps> = (props) => {
   const [childSidebarOpen, setChildSidebarOpen] = useState<boolean>(false);
 
   if (props.list.type === "dropdown" && props.list.childrenList.length > 0) {
     return (
-      <Auxiliary>
-        <NavbarLITag
-          className={NavBarLiType.Default}
-          onClick={() => setChildSidebarOpen(!childSidebarOpen)}
-          key={props.list.id}
-        >
-          <SidebarList {...props} />
-        </NavbarLITag>
-        {props.list.childrenList.length > 0 && (
-          <SidebarChildrenList
-            childrenList={props.list.childrenList}
-            isOpen={childSidebarOpen}
-            key={props.list.id}
-          />
-        )}
-      </Auxiliary>
+      <LinkWrapper
+        props={props}
+        className={LinkWrapperType.Default}
+        onclick={() => setChildSidebarOpen(!childSidebarOpen)}
+      >
+        <SidebarList
+          label={props.list.label}
+          haveChildren={props.list.childrenList.length > 0}
+          icon={props.list.icon}
+          children={props.list.childrenList}
+          isOpenChildren={childSidebarOpen}
+        />
+      </LinkWrapper>
     );
   }
-  return <SidebarListWithLi {...props} />;
+
+  return (
+    <LinkWrapper props={props} className={LinkWrapperType.Default}>
+      <SidebarList
+        label={props.list.label}
+        haveChildren={props.list.childrenList.length > 0}
+        icon={props.list.icon}
+      />
+    </LinkWrapper>
+  );
 };
 
 export default AdminSidebar;
